@@ -1,19 +1,18 @@
 import { sendToPloomes } from "./ploomes.service";
 
-export async function handleLeadFromRD(payload: any) {
-  // Extrair dados importantes do lead (ajuste conforme o JSON real do RD)
+export async function handleLeadFromRD(body: any) {
+  const payload = body?.payload || {};
+
   const lead = {
-    name: payload?.name || payload?.nome || "Sem Nome",
-    email: payload?.email || payload?.email_lead,
-    phone: payload?.personal_phone || payload?.phone,
-    event: payload?.event_type || "conversao",
+    name: payload?.name || "Sem Nome",
+    email: payload?.email,
+    phone: payload?.personal_phone || payload?.mobile_phone,
+    event: body?.event_type || payload?.conversion_identifier || "conversion"
   };
 
   if (!lead.email) {
     throw new Error("Webhook RD sem e-mail");
   }
 
-  // Enviar para o Ploomes
   await sendToPloomes(lead);
 }
-
