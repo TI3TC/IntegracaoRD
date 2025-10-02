@@ -37,8 +37,10 @@ Integração entre **RD Station** e **Ploomes** para sincronizar leads convertid
 
 ## 🔑 Configuração
 
-Criar arquivo `.env`:
+arquivo `.env`:
 
 ```env
-PORT=4000
+PORT=4100
 PLOOMES_API_KEY=coloque_sua_user_key_aqui
+PLOOMES_STAGE_ID=
+
