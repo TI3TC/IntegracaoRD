@@ -41,6 +41,6 @@ arquivo `.env`:
 
 ```env
 PORT=4100
-PLOOMES_API_KEY=Hamburgueeeer
+PLOOMES_API_KEY=segredo
 PLOOMES_STAGE_ID=
 
