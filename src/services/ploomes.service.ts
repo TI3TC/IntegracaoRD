@@ -7,6 +7,9 @@ interface LeadData {
   email: string;
   phone?: string;
   event?: string;
+  projeto:string;
+  aplicacao:string;
+  fj:string;
 }
 
 export async function sendToPloomes(data: LeadData) {
