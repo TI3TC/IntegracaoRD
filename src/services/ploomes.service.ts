@@ -80,11 +80,11 @@ export async function sendToPloomes(data: LeadData) {
   // Ir para o RD: Cliente ativo/inativo + sincronizar Aplicação/Projeto
   if (data.aplicacao || data.projeto || typeof data.clienteAtivo === "boolean") {
     await upsertRDContact({
-      email: data.email,
-      name: data.name,
+      email: data.email, // -> e-mail_do_cliente
+      name: data.name, // -> nome_do_cliente
       aplicacao: data.aplicacao, // -> cf_aplicacao
       projeto: data.projeto,     // -> cf_conte_mais_sobre_seu_projeto
-      clienteAtivo: data.clienteAtivo, // -> cf_cliente_status (se existir)
+      clienteAtivo: data.clienteAtivo, // -> cf_cliente_status 
     });
   }
 }
