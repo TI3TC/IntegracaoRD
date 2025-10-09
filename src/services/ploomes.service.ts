@@ -41,12 +41,11 @@ export async function sendToPloomes(data: LeadData) {
 
   // Campos customizados do Ploomes
   const otherProps = [
-    ...(data.event ? [{ FieldKey: "Evento", StringValue: data.event }] : []),
-    ...(data.aplicacao ? [{ FieldKey: "Aplicação", StringValue: data.aplicacao }] : []),
+    ...(data.event ? [{ FieldKey: "deal_A58AE4B4-EB69-4066-8808-391385969E57", StringValue: data.event }] : []),
+    ...(data.aplicacao ? [{ FieldKey: "contact_F5967A1F-9EDB-429F-A341-E1278F4BB0DA", StringValue: data.aplicacao }] : []),
     ...(data.projeto
-      ? [{ FieldKey: "Conte mais sobre seu projeto", StringValue: data.projeto }]
+      ? [{ FieldKey: "Cdeal_FB4DEBC2-6EA1-4A1A-950D-E094B69FFAA1", StringValue: data.projeto }]
       : []),
-    // ❌ NÃO enviar metragem
   ];
 
   if (existing.data?.value?.length > 0) {
