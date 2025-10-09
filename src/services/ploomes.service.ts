@@ -43,9 +43,7 @@ export async function sendToPloomes(data: LeadData) {
   const otherProps = [
     ...(data.event ? [{ FieldKey: "deal_A58AE4B4-EB69-4066-8808-391385969E57", StringValue: data.event }] : []),
     ...(data.aplicacao ? [{ FieldKey: "contact_F5967A1F-9EDB-429F-A341-E1278F4BB0DA", StringValue: data.aplicacao }] : []),
-    ...(data.projeto
-      ? [{ FieldKey: "Cdeal_FB4DEBC2-6EA1-4A1A-950D-E094B69FFAA1", StringValue: data.projeto }]
-      : []),
+    ...(data.projeto? [{ FieldKey: "Cdeal_FB4DEBC2-6EA1-4A1A-950D-E094B69FFAA1", StringValue: data.projeto }] : []),
   ];
 
   if (existing.data?.value?.length > 0) {
