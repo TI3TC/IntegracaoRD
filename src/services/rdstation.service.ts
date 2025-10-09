@@ -97,7 +97,7 @@ export async function handlePloomesDealWebhook(evt: {
 }) {
   if (!evt.ContactEmail) return;
 
-  const isSale = evt.DealStatus === "Won" && evt.StatusReason === "Como ganho";
+  const isSale = evt.DealStatus === "4"&& evt.StatusReason === "Como ganho"; //status id 4 = negocio ganho
   if (isSale) {
     await markSaleInRD(evt.ContactEmail, evt.StatusReason);
   }
