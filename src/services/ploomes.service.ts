@@ -25,7 +25,7 @@ export async function sendToPloomes(data: LeadData): Promise<void> {
     // 2️⃣ Monta as propriedades customizadas
     const otherProperties = [
       { FieldKey: "deal_A58AE4B4-EB69-4066-8808-391385969E57", StringValue: data.event || "" },//Conversão (Evento)
-      { FieldKey: "deal_FB4DEBC2-6EA1-4A1A-950D-E094B69FFAA1", StringValue: data.projeto || "" },//Conte mais sobre seu projeto
+      { FieldKey: "deal_FB4DEBC2-6EA1-4A1A-950D-E094B69FFAA1", BigStringValue: data.projeto || "" },//Conte mais sobre seu projeto
       { FieldKey: "deal_5227A40F-4DA6-41D6-A7A9-4828E23F5076", StringValue: data.aplicacao || "" },//Aplicaçao 3TC
       { FieldKey: "deal_6C491316-B171-4CF8-AF21-DE99D01EA75F", StringValue: data.fj || "" }//Fisica/Juridica
     ];
