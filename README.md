@@ -1,5 +1,7 @@
 # IntegraçãoRD
 
+./deploy.sh para executar o build
+
 Estrutura:
 
 /root/IntegracaoRD/
