@@ -64,3 +64,54 @@ Cria um novo negócio (Deal) no pipeline configurado.
 
 Log completo salvo no PM2 (com payload, status e resposta da API).
 
+# Integração RD → Ploomes (3TC)
+
+Sistema Node.js/TypeScript que conecta o RD Station ao Ploomes via API REST,
+automatizando a criação de contatos e negócios a partir de conversões.
+
+---
+
+## 🚀 Arquitetura
+
+- Backend: Node.js + Express + TypeScript
+- Infra: Ubuntu 22.04 VPS (Hostinger)
+- Process Manager: PM2
+- Logs: PM2 out/error
+- Dependências: axios, dotenv, express
+
+---
+
+## 🔗 Fluxo de dados
+
+1. RD Station dispara webhook → `/webhook/rdstation`
+2. API valida evento `CONVERSION`
+3. Busca ou cria contato no Ploomes
+4. Cria novo negócio (Deal) vinculado ao pipeline
+
+---
+
+## ⚙️ Configuração `.env`
+
+```bash
+PLOOMES_API_URL=https://api2-s13-app.ploomes.com
+PLOOMES_API_KEY=SEU_TOKEN_AQUI
+PLOOMES_PIPELINE_ID=40030343
+PLOOMES_STAGE_ID=40303847
+PLOOMES_PERSON_ID=120001
+PLOOMES_PERSON_NAME=Seu Nome Aqui
+PORT=4100
+
+Teste Manual:
+
+curl -X POST http://localhost:4100/webhook/rdstation \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "CONVERSION",
+    "payload": {
+      "name": "João Teste API",
+      "email": "teste.api@3tc.com.br",
+      "personal_phone": "11999999999",
+      "cf_aplicacao": "Residencial",
+      "cf_conte_mais_sobre_seu_projeto": "Teste integração RD-Ploomes"
+    }
+  }'
