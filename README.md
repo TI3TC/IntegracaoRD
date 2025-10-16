@@ -4,6 +4,8 @@
 │  - Dispara Webhook → evento de conversão (CONVERSION)      │
 │  - Envia payload JSON: nome, email, telefone, campos etc.  │
 └───────────────────────────────────────────────────────────┘
+
+
                            │
                            ▼
 ┌───────────────────────────────────────────────────────────┐
@@ -30,6 +32,8 @@
 │     5️⃣ Cria novo negócio (Deal)                          │
 │                                                           │
 └───────────────────────────────────────────────────────────┘
+
+
                            │
                            ▼
 ┌───────────────────────────────────────────────────────────┐
@@ -43,4 +47,20 @@
 │                                                           │
 │  ✅ Recebe dados via API REST e cria negócio automático.   │
 └───────────────────────────────────────────────────────────┘
+
+Fluxo resumido
+
+RD Station envia um webhook (POST /webhook/rdstation).
+
+O backend recebe, valida e extrai os dados.
+
+Se o event_type for CONVERSION:
+
+Busca o contato no Ploomes;
+
+Cria se não existir;
+
+Cria um novo negócio (Deal) no pipeline configurado.
+
+Log completo salvo no PM2 (com payload, status e resposta da API).
 
