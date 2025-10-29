@@ -1,11 +1,11 @@
-import { Router } from "express";
+import express from "express";
 import { rdstationWebhook } from "./controllers/rdstation.controller";
+import { ploomesWebhook } from "./controllers/ploomes.controller";
 
-export const router = Router();
+const router = express.Router();
 
-// Webhook do RD Station
-router.post("/webhook/rdstation", rdstationWebhook);
+// Webhooks
+router.post("/rdstation/webhook", rdstationWebhook);
+router.post("/ploomes/webhook", ploomesWebhook); // novo
 
-// Healthcheck
-router.get("/healthz", (_req, res) => res.json({ status: "ok" }));
-
+export default router;
